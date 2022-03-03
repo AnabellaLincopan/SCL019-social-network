@@ -135,6 +135,15 @@ body{
     padding-right: 24px;
     padding-left:8px;
     transition: 0.5s;
+    
+  } 
+
+  .iconEye{
+    color: white;
+    position: absolute;
+    padding: 9px;
+    left: 270px;
+    cursor: pointer;
   } 
 
   .sectionReturn{
