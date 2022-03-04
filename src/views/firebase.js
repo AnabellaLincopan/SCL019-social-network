@@ -13,6 +13,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
 import { firebaseConfig } from "./config.js";
+import {validateEmailRequire, validateEmailInUse} from "./register.js";
 
 
 // Initialize Firebase
@@ -29,20 +30,30 @@ export const registerUser = (userName, email, password) => {
       user.displayName = userName;
       // console.log(user);
       // ...
-
+     return (user);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
+     if (errorCode === "auth/invalid-email"){
+      validateEmailRequire.style.display = "block";
+     };
 
-      console.log(errorCode, errorMessage);
+     if (errorCode === "auth/email-already-in-use"){
+      validateEmailInUse.classList.remove(".emailInUse");
+      validateEmailInUse.createElement("div");
+      validateEmailInUse.className = "showEmailInUse";
+     
+     }
+      //console.log(errorCode, errorMessage);
       // ..
 
       // console.log(errorCode, errorMessage);
       // ..
 
     });
+    return createUserWithEmailAndPassword
 };
 
 // login con google

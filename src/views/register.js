@@ -32,14 +32,17 @@ export const myFunction = () => {
   userData.innerHTML = `
   <form id="formLogin" class="FormLogin">
   <div class="name"> Name </div>
-  <input type="text" id="registerNameLogin" class="registerNameLogin" placeholder= "Enter your name" autocomplete= "off" required/>
+  <input type="text" id="registerNameLogin" class="registerNameLogin" placeholder= "Enter your name" autocomplete= "off"/>
   <div class="nickName"> Nickname </div>
   <input type="text" id="nickNameLogin" class="nickNameLogin" placeholder= "Enter your nickname" autocomplete= "off"/>
   <div class="email"> E-mail </div>
-  <input type="email" id="emailLogin" class="emailLogin" placeholder= "Enter e-mail" autocomplete= "off" required />
+  <input type="email" id="emailLogin" class="emailLogin" placeholder= "Enter e-mail" autocomplete= "off"/>
+  <span class="displayNone"><p id="emailRequired"> Error: invalid-email </p></span>
+  <span class="displayNone"><p id="emailInUse" class="emailInUseInvalid"> Error: email-already in use </p></span>
   <div class="password"> Password </div>
   <span class="iconEye"><i id="checkEye" class="fas fa-eye-slash"></i></span>
-  <input type="password" id="passwordLogin" class="passwordLogin" placeholder= "Enter password" required/>
+  <input type="password" id="passwordLogin" class="passwordLogin" placeholder= "Enter password" minlength="6" maxlength="8"/>
+  <span class="displayNone"><p id="passwordRequiredText">  *Minimum 6 characters </p></span>
   <input type="submit" id="submit-register" class="submit-register" value="Continue">
   </form>
   </div>
@@ -47,6 +50,9 @@ export const myFunction = () => {
 
   infoContainer.appendChild(userData);
   // console.log('Hola mundo!');
+
+
+  
 
   // Mostrar y ocultar contraseña
   const iconEye = userData.querySelector(".iconEye");
@@ -65,6 +71,12 @@ export const myFunction = () => {
     }
   });
 
+  const passwordRequired = document.getElementById("passwordLogin");
+   passwordRequired.onkeyup = function(){
+   document.getElementById("passwordRequiredText").style.display = "block";
+   };
+
+  
 
   // boton de continuar
   // const buttonContinue = document.createElement("div");
@@ -78,7 +90,7 @@ export const myFunction = () => {
   // prueba boton de registro
 
   const buttonContinue = document.getElementById('submit-register');
-  buttonContinue.addEventListener('submit', (e) => {
+  buttonContinue.addEventListener('click', (e) => {
     e.preventDefault();
     const userName = document.getElementById('registerNameLogin').value;
     const email = document.getElementById('emailLogin').value;
@@ -132,3 +144,6 @@ export const myFunction = () => {
   sectionReturn.appendChild(returnLogin);
   sectionReturn.appendChild(link);
 };
+
+  export const validateEmailRequire = document.getElementById("emailRequired");
+  export const validateEmailInUse = document.querySelector(".emailInUseInvalid");
