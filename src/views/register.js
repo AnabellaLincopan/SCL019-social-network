@@ -1,9 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { registerUser } from "./firebase.js";
 // eslint-disable-next-line import/no-cycle
-//import { root } from "../main.js";
-
-// aqui exportaras las funciones que necesites
 
 export const viewRegister = () => {
   // console.log("me ejecuto segundo");
@@ -11,7 +8,7 @@ export const viewRegister = () => {
   // Creamos el padre de toda la seccion Register
   const registerContainer = document.createElement("div");
   registerContainer.className = "registerContainer";
-  //root.appendChild(registerContainer);
+  // root.appendChild(registerContainer);
 
   // Creamos el contenedor de toda la seccion
   const infoContainer = document.createElement("div");
@@ -75,26 +72,25 @@ export const viewRegister = () => {
 
   //  const passwordRequired = document.querySelector(".passwordLogin");
   //  console.log(passwordRequired);
-     passwordLogin.onkeyup = function () {
-     document.getElementById("passwordRequiredText").style.display = "block";
-    };
+  // Agregamos una funcion para mostrar un mensaje de advertencia en el password
+  passwordLogin.onkeyup = function () {
+    document.getElementById("passwordRequiredText").style.display = "block";
+  };
   // boton de continuar
-   const buttonContinue = document.createElement("div");
-   buttonContinue.className = "buttonContinue";
-   buttonContinue.innerHTML = `
+  const buttonContinue = document.createElement("div");
+  buttonContinue.className = "buttonContinue-place";
+  buttonContinue.innerHTML = `
    <input type="button" id="buttonContinue" class="buttonContinue" value="Continue">
    `;
-   userData.appendChild(buttonContinue);
-   buttonContinue.addEventListener("click", () => {
+  userData.appendChild(buttonContinue);
+  buttonContinue.addEventListener("click", () => {
     //  e.preventDefault();
-     const userName = document.getElementById("registerNameLogin").value;
-     const email = document.getElementById("emailLogin").value;
-     const password = document.getElementById("passwordLogin").value;
-  
+    const userName = document.getElementById("registerNameLogin").value;
+    const email = document.getElementById("emailLogin").value;
+    const password = document.getElementById("passwordLogin").value;
     registerUser(userName, email, password);
-  
     // // // console.log(registerUser);
-   });
+  });
 
   // infoContainer.appendChild(buttonContinue);
 
