@@ -20,6 +20,7 @@
 import {
   GoogleAuthProvider,
   addDoc,
+  getDocs,
   collection,
   createUserWithEmailAndPassword,
   getAuth,
@@ -182,3 +183,5 @@ export const logOut = () => {
 export const db = getFirestore();
 
 export const saveTask = (description) => addDoc(collection(db, "usuarios"), { description });
+
+export const getTasks = getDocs(collection(db, "usuarios"));
