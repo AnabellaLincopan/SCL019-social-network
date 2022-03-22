@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 // import { logOut } from "./firebase.js";
-import { saveTask, getTasks } from "./firebase.js";
+import { saveTask, onGetTasks } from "./firebase.js";
+import { query, orderBy } from "./firebase-init.js";
 
 // const pruebaContainer = document.createElement("div");
 
@@ -106,27 +107,31 @@ export const viewWall = () => {
   createPost.className = "createPost";
   infoWallContainer.appendChild(createPost);
 
-  // neveFunction() {
-  //   window.addEventListener("DOMContentLoaded", async () => {
-  //   // console.log("works");
-  //   const querySnapshot = await getTasks();
-  //   console.log(querySnapshot);
-  //   let html = "";
-  //   querySnapshot.forEach((doc) => {
-  //    console.log(doc.data());
+  const newPost = async () => {
+    // console.log("works");
+    onGetTasks((querySnapshot) => {
+      let postContainer = "";
 
-  //     const task = doc.data();
-  //     html += `
-  //      <div>
-  //      <h3> User </h3>
-  //      <p>${task.description}</p>
-  //      </div>
-  //     `;
-  //    });
+      // console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+      // console.log(doc.data());
 
-  //    createPost.innerHTML = html;
-  //  });
-  // }
+        const task = query(doc.data(), orderBy("date", "desc"));
+        postContainer += `
+        <div>
+        <h3> User </h3>
+        <p>${task.description}</p>
+        </div>
+       `;
+        console.log(postContainer);
+      });
+      createPost.innerHTML = postContainer;
+    });
+  };
+
+  const wallPost = newPost();
+  // wallPost.createElement("div");
+  console.log(wallPost);
 
   return wallContainer;
 };

@@ -22,6 +22,7 @@ import {
   addDoc,
   getDocs,
   collection,
+  onSnapshot,
   createUserWithEmailAndPassword,
   getAuth,
   getFirestore,
@@ -31,6 +32,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  // query,
+  // orderBy,
 } from "./firebase-init.js";
 
 import { firebaseConfig } from "./config.js";
@@ -182,6 +185,10 @@ export const logOut = () => {
 // Conectamos con nuestra Base de datos
 export const db = getFirestore();
 
+// Guardamos los datos en Firestore
 export const saveTask = (description) => addDoc(collection(db, "usuarios"), { description });
 
+// Mostrar los datos guardados
 export const getTasks = getDocs(collection(db, "usuarios"));
+
+export const onGetTasks = (callback) => onSnapshot(collection(db, "usuarios"), callback);

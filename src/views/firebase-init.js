@@ -17,6 +17,9 @@ import {
   collection,
   addDoc,
   getDocs,
+  onSnapshot,
+  query,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -34,4 +37,7 @@ export {
   collection,
   getDocs,
   addDoc,
+  onSnapshot,
+  query,
+  orderBy,
 };
