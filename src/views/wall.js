@@ -3,28 +3,6 @@
 import { saveTask, onGetTasks } from "./firebase.js";
 import { query, orderBy } from "./firebase-init.js";
 
-// const pruebaContainer = document.createElement("div");
-
-// window.addEventListener("DOMContentLoaded", async () => {
-//   // console.log("works");
-//   const querySnapshot = await getTasks;
-//   // console.log(querySnapshot);
-//   let html = "";
-//   querySnapshot.forEach((doc) => {
-//     // console.log(doc.data());
-   
-//     const task = doc.data();
-//     html += `
-//      <div>
-//      <h3> User </h3>
-//      <p>${task.description}</p>
-//      </div>
-//     `;
-//   });
-
-//  pruebaContainer.innerHTML = html;
-// });
-
 export const viewWall = () => {
   const wallContainer = document.createElement("div");
   wallContainer.className = "wall";
@@ -67,8 +45,8 @@ export const viewWall = () => {
   const wallPostData = document.createElement("div");
   wallPostData.className = "wallPostData";
   wallPostData.innerHTML = `
- <label for="description">Description:</label>
- <input type="text" id="task-description" rows="3" class="makePost" placeholder="Task Description"></input>
+ 
+ <textarea id="task-description" rows="3" class="makePost" placeholder="Write Something..."></textarea>
  <span class="errorPost"></span>
  <span class="wall-off"><i class="fa fa-power-off"></i></span>
  <span class="post-remove"><i class="fa fa-trash"></i></span>
@@ -115,15 +93,15 @@ export const viewWall = () => {
       // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
       // console.log(doc.data());
-
-        const task = query(doc.data(), orderBy("date", "desc"));
+      // query(doc.data(), orderBy("date", "desc"));
+        const task = doc.data();
         postContainer += `
         <div>
         <h3> User </h3>
         <p>${task.description}</p>
         </div>
        `;
-        console.log(postContainer);
+        // console.log(postContainer);
       });
       createPost.innerHTML = postContainer;
     });

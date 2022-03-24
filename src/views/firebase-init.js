@@ -18,6 +18,7 @@ import {
   addDoc,
   getDocs,
   onSnapshot,
+  Timestamp,
   query,
   orderBy,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
@@ -38,6 +39,7 @@ export {
   getDocs,
   addDoc,
   onSnapshot,
+  Timestamp,
   query,
   orderBy,
 };

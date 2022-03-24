@@ -32,8 +32,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  // query,
-  // orderBy,
+  Timestamp,
+  query,
+  orderBy,
 } from "./firebase-init.js";
 
 import { firebaseConfig } from "./config.js";
@@ -186,9 +187,13 @@ export const logOut = () => {
 export const db = getFirestore();
 
 // Guardamos los datos en Firestore
-export const saveTask = (description) => addDoc(collection(db, "usuarios"), { description });
+export const saveTask = async (description) => {
+  const date = Timestamp.fromDate(new Date());
+
+  await addDoc(collection(db, "usuarios"), { description, date });
+};
 
 // Mostrar los datos guardados
 export const getTasks = getDocs(collection(db, "usuarios"));
 
-export const onGetTasks = (callback) => onSnapshot(collection(db, "usuarios"), callback);
+export const onGetTasks = (callback) => onSnapshot(collection(db, "usuarios"), callback).query(orderBy("date", "desc"));
