@@ -22,7 +22,6 @@ import {
   Timestamp,
   query,
   orderBy,
-  Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -44,5 +43,4 @@ export {
   Timestamp,
   query,
   orderBy,
-  Timestamp,
 };

@@ -22,7 +22,8 @@ export const viewWall = () => {
   const btnLogout = document.createElement("div");
   btnLogout.className = "btnLogout";
   btnLogout.innerHTML = `
-  <input type="button" id="btnLogout" class="btn-logout" value="LOG OUT">
+  <button class="btnLogout-In" ><i class="fa fa-power-off fa-2x"></i></button>
+
   `;
   wallHeader.appendChild(btnLogout);
 
@@ -31,10 +32,10 @@ export const viewWall = () => {
   });
 
   // Creacion de Nombre de usuario en pantalla
-  const idUserText = document.createElement("div");
+  const idUserText = document.createElement("h1");
   idUserText.className = "idUserText";
   wallHeader.appendChild(idUserText);
-  idUserText.textContent = " Hello User";
+  idUserText.textContent = " Hello & Welcome ";
 
   // Creacion de Seccion de Post
   const postSection = document.createElement("div");
@@ -45,17 +46,13 @@ export const viewWall = () => {
   const wallPostData = document.createElement("div");
   wallPostData.className = "wallPostData";
   wallPostData.innerHTML = `
-<<<<<<< HEAD
- 
- <textarea id="task-description" rows="3" class="makePost" placeholder="Write Something..."></textarea>
-=======
- <textarea id="task-description" rows="3" class="makePost" placeholder="Write something..."></textarea>
->>>>>>> d27884fc464d54a2e2e47105b357ec6b7559dd18
+ <textarea id="task-description" rows="5" cols="40" class="makePost" placeholder="Write something..."></textarea>
  <span class="errorPost"></span>
- <span class="wall-off"><i class="fa fa-power-off"></i></span>
- <span class="post-remove"><i class="fa fa-trash"></i></span>
- <span class="post-like"><i class="fa fa-thumbs-up"></i></span>
+ 
  `;
+  // Iconos a utilizar para eliminar y Like
+  //  <span class="post-remove"><i class="fa fa-trash"></i></span>
+  //  <span class="post-like"><i class="fa fa-thumbs-up"></i></span>
 
   // infoWallContainer.appendChild(wallPostData);
   postSection.appendChild(wallPostData);
@@ -64,7 +61,7 @@ export const viewWall = () => {
   const btnPost = document.createElement("div");
   btnPost.className = "btnPost";
   btnPost.innerHTML = `
-   <input type="button" id="btnPost" value="Post">
+   <input type="button" id="btnPost-edit" value="Post">
    `;
   postSection.appendChild(btnPost);
 
@@ -101,9 +98,9 @@ export const viewWall = () => {
         const task = doc.data();
         const userNameId = doc.data();
         postContainer += `
-        <div>
-        <h3>${userNameId.name}</h3>
-        <p>${task.description}</p>
+        <div class="newUserPost">
+        <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
+        <div class="textDescriptionPost"><p>${task.description}</p></div>
         </div>
        `;
         // console.log(postContainer);

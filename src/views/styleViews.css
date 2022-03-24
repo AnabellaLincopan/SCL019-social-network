@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Sans&display=swap');
 body{
     background-color: #4b4a4a;
   font-family: "Fira Code", monospace;
@@ -242,3 +243,78 @@ body{
 
 /*----------Wall Section -----------*/
 
+.infoWallContainer{
+  background-color: #121111;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.btnLogout{
+  display: flex;
+  margin-left: 235px;
+}
+.btnLogout-In{
+  background-color: #121111 ;
+  color: #F5F5F5;
+  border: none;
+}
+.idUserText{
+  display: flex;
+  justify-content: left;
+  margin-top: 7px;
+  font-family: "Fira Code", monospace;
+  color: #F5F5F5;
+  font-size: 20px;
+}
+.postSection{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.btnPost{
+  display: flex;
+  justify-content: right;
+  
+}
+#btnPost-edit{
+  background-color: #6B6A6A;
+  border-radius: 3px;
+  color: white;
+  border: none;
+  padding: 5px; 
+  width: 4.50em;
+  margin-top: 10px;
+}
+/*SECCION DE POSTS*/
+.createPost{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+  margin-top: 25px;
+}
+.newUserPost{
+  display: flex;
+/* height: 78px;
+width: 267px; */
+margin-top: 15px;
+border-radius: 5px;
+background-color: #333333;
+border: 1px solid #00FFD1
+}
+.textUserOnPost{
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #F5F5F5;
+  font-style: italic;
+  font-size: 15px;
+}
+.textDescriptionPost{
+  justify-content: left;
+  color: #F5F5F5;
+  display: flex;
+}
