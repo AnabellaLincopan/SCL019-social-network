@@ -1,29 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 // import { logOut } from "./firebase.js";
 import { saveTask, onGetTasks } from "./firebase.js";
-import { query, orderBy } from "./firebase-init.js";
-
-// const pruebaContainer = document.createElement("div");
-
-// window.addEventListener("DOMContentLoaded", async () => {
-//   // console.log("works");
-//   const querySnapshot = await getTasks;
-//   // console.log(querySnapshot);
-//   let html = "";
-//   querySnapshot.forEach((doc) => {
-//     // console.log(doc.data());
-   
-//     const task = doc.data();
-//     html += `
-//      <div>
-//      <h3> User </h3>
-//      <p>${task.description}</p>
-//      </div>
-//     `;
-//   });
-
-//  pruebaContainer.innerHTML = html;
-// });
+import { onSnapshot } from "./firebase-init.js";
 
 export const viewWall = () => {
   const wallContainer = document.createElement("div");
@@ -56,7 +34,7 @@ export const viewWall = () => {
   const idUserText = document.createElement("div");
   idUserText.className = "idUserText";
   wallHeader.appendChild(idUserText);
-  idUserText.textContent = " Hello, User ";
+  idUserText.textContent = " Hello User";
 
   // Creacion de Seccion de Post
   const postSection = document.createElement("div");
@@ -67,8 +45,7 @@ export const viewWall = () => {
   const wallPostData = document.createElement("div");
   wallPostData.className = "wallPostData";
   wallPostData.innerHTML = `
- <label for="description">Description:</label>
- <input type="text" id="task-description" rows="3" class="makePost" placeholder="Task Description"></input>
+ <textarea id="task-description" rows="3" class="makePost" placeholder="Write something..."></textarea>
  <span class="errorPost"></span>
  <span class="wall-off"><i class="fa fa-power-off"></i></span>
  <span class="post-remove"><i class="fa fa-trash"></i></span>
@@ -109,17 +86,18 @@ export const viewWall = () => {
 
   const newPost = async () => {
     // console.log("works");
-    onGetTasks((querySnapshot) => {
+    onSnapshot(onGetTasks, (querySnapshot) => {
       let postContainer = "";
 
       // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
       // console.log(doc.data());
 
-        const task = query(doc.data(), orderBy("date", "desc"));
+        const task = doc.data();
+        const userNameId = doc.data();
         postContainer += `
         <div>
-        <h3> User </h3>
+        <h3>${userNameId.name}</h3>
         <p>${task.description}</p>
         </div>
        `;
