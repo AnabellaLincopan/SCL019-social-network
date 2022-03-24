@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-console */
@@ -102,6 +103,7 @@ export const loginWithGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      userFromGoogle();
       window.location.hash = "#/wall";
 
       // ...
@@ -120,6 +122,22 @@ export const loginWithGoogle = () => {
     });
 };
 
+// se guarda el perfil de usuario de google
+export const userFromGoogle = async () => {
+  const user = auth.currentUser;
+  const userName = user.displayName;
+  if (user !== null) {
+    const docRefGoogle = await addDoc(collection(db, "userFromGoogle"), {
+      name: user.displayName,
+      email: user.email,
+      uid: user.uid,
+    });
+    // console.log(docRefGoogle);
+  }
+};
+
+// export const dataUser = auth.currentUser;
+
 // para conocer el estado de autenticación del usuario
 export const activeUser = () => {
   onAuthStateChanged(auth, (user) => {
@@ -135,15 +153,17 @@ export const activeUser = () => {
   });
 };
 
+// login
 export const loginUser = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      userFromId();
       if (user.emailVerified === true) {
         window.location.hash = "#/wall";
         // console.log(user);
-      // ...
+        // ...
       } else {
         alert("Debes verificar tu email para poder ingresar");
         // console.log(user);
@@ -172,13 +192,29 @@ export const loginUser = (email, password) => {
     });
 };
 
+export const userFromId = async () => {
+  const user = auth.currentUser;
+  const userName = user.displayName;
+  if (user !== null) {
+    const docRefUsuarios = await addDoc(collection(db, "userFromId"), {
+      name: user.email,
+      email: user.email,
+      uid: user.uid,
+    });
+    // console.log(docRefGoogle);
+  }
+};
+
+// log out
 export const logOut = () => {
-  signOut(auth).then(() => {
-    window.location.hash = "#/";
-  // Sign-out successful.
-  }).catch((error) => {
-  // An error happened.
-  });
+  signOut(auth)
+    .then(() => {
+      window.location.hash = "#/";
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 };
 
 // -------------------------FIRESTORE----------------------------
@@ -189,11 +225,29 @@ export const db = getFirestore();
 // Guardamos los datos en Firestore
 export const saveTask = async (description) => {
   const date = Timestamp.fromDate(new Date());
+  let userName;
+  if (auth.currentUser.displayName === null) {
+    const newName = auth.currentUser.email.split("@");
+    userName = newName[0];
+  } else {
+    userName = auth.currentUser.displayName;
+  }
 
-  await addDoc(collection(db, "usuarios"), { description, date });
+  const profile = await addDoc(collection(db, "usuarios"), {
+    description,
+    date,
+    userId: auth.currentUser.uid,
+    name: userName,
+    likes: [],
+    likesCounter: 0,
+  });
+  return profile;
 };
 
 // Mostrar los datos guardados
 export const getTasks = getDocs(collection(db, "usuarios"));
 
-export const onGetTasks = (callback) => onSnapshot(collection(db, "usuarios"), callback).query(orderBy("date", "desc"));
+export const onGetTasks = query(
+  collection(db, "usuarios"),
+  orderBy("date", "desc"),
+);

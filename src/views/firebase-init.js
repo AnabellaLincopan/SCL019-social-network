@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
 import {
@@ -21,6 +22,7 @@ import {
   Timestamp,
   query,
   orderBy,
+  Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -42,4 +44,5 @@ export {
   Timestamp,
   query,
   orderBy,
+  Timestamp,
 };

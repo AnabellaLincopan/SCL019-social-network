@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 // import { logOut } from "./firebase.js";
 import { saveTask, onGetTasks } from "./firebase.js";
-import { query, orderBy } from "./firebase-init.js";
+import { onSnapshot } from "./firebase-init.js";
 
 export const viewWall = () => {
   const wallContainer = document.createElement("div");
@@ -34,7 +34,7 @@ export const viewWall = () => {
   const idUserText = document.createElement("div");
   idUserText.className = "idUserText";
   wallHeader.appendChild(idUserText);
-  idUserText.textContent = " Hello, User ";
+  idUserText.textContent = " Hello User";
 
   // Creacion de Seccion de Post
   const postSection = document.createElement("div");
@@ -45,8 +45,12 @@ export const viewWall = () => {
   const wallPostData = document.createElement("div");
   wallPostData.className = "wallPostData";
   wallPostData.innerHTML = `
+<<<<<<< HEAD
  
  <textarea id="task-description" rows="3" class="makePost" placeholder="Write Something..."></textarea>
+=======
+ <textarea id="task-description" rows="3" class="makePost" placeholder="Write something..."></textarea>
+>>>>>>> d27884fc464d54a2e2e47105b357ec6b7559dd18
  <span class="errorPost"></span>
  <span class="wall-off"><i class="fa fa-power-off"></i></span>
  <span class="post-remove"><i class="fa fa-trash"></i></span>
@@ -87,17 +91,18 @@ export const viewWall = () => {
 
   const newPost = async () => {
     // console.log("works");
-    onGetTasks((querySnapshot) => {
+    onSnapshot(onGetTasks, (querySnapshot) => {
       let postContainer = "";
 
       // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
       // console.log(doc.data());
-      // query(doc.data(), orderBy("date", "desc"));
+
         const task = doc.data();
+        const userNameId = doc.data();
         postContainer += `
         <div>
-        <h3> User </h3>
+        <h3>${userNameId.name}</h3>
         <p>${task.description}</p>
         </div>
        `;
