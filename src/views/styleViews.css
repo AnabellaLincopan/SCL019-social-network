@@ -300,6 +300,7 @@ body{
 }
 .newUserPost{
   display: flex;
+  flex-direction: column;
 /* height: 78px;
 width: 267px; */
 margin-top: 15px;
@@ -308,13 +309,31 @@ background-color: #333333;
 border: 1px solid #00FFD1
 }
 .textUserOnPost{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   font-family: 'IBM Plex Sans', sans-serif;
   color: #F5F5F5;
   font-style: italic;
   font-size: 15px;
 }
+.section-btn-edit-post{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
 .textDescriptionPost{
-  justify-content: left;
   color: #F5F5F5;
   display: flex;
+  flex-direction: column;
+}
+.section-likes{
+  display: flex;
+  justify-content: right;
+ 
+}
+.btn-Likes{
+  background-color: #121111 ;
+  color: #F5F5F5;
+  border: 1px solid #00FFD1
 }

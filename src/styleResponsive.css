@@ -193,7 +193,7 @@
    font-family:'Fira Code', monospace;
    border-radius: var(--border-width);
 
-}
+ }
 
  .loginUserData{
   display:flex; 
@@ -214,10 +214,62 @@
   left: 195px;
   top: 207px;
  }
-}
+
 .login-iconEye{
    position: absolute;
    padding: 4px;
    left: 1567px;
      
+}
+/*SECCION MURO*/
+ .wall{
+  background-color: #4b4a4a;
+  width: 1440px;
+  height: 1256px;
+  position:relative;
+
+ }
+ .infoWallContainer{
+  --border-width: 3px; 
+  background-color: #121111;
+ /* OJO NUEVA ANOTACION*/
+    position: absolute;
+    width: 1340px;
+    height: 580px;
+    margin-top: 50px;  
+    margin-left: 50px; 
+    color: white;
+    font-size: 1em ;
+    font-family:'Fira Code', monospace;
+    border-radius: var(--border-width);
+
+ }
+ .registerContainer::after, .loginContainer::after{
+   position: absolute; 
+   content: "";  
+   z-index: -1; 
+   width: calc(100% + var(--border-width) * 2);
+   height: calc(100% + var(--border-width) * 2); 
+   background: linear-gradient(
+       60deg,
+       hsl(231, 100%, 50%),
+       hsl(273, 73%, 53%),
+       hsl(314, 100%, 50%),
+       hsl(12, 100%, 50%),
+       hsl(64, 100%, 50%),
+       hsl(89, 85%, 66%),
+       hsl(134, 100%, 50%),
+       hsl(179, 100%, 50%)
+     );
+      background-size: 300% 300%; 
+     background-position: 0 50%; 
+     border-radius: calc(2 * var(--border-width)); 
+     animation: moveGradient 10s alternate infinite; 
+ }
+
+ @keyframes moveGradient {
+   50% {
+     background-position: 100% 50%;
+   }
+ } 
 }

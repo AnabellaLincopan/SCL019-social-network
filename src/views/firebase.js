@@ -36,6 +36,10 @@ import {
   Timestamp,
   query,
   orderBy,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 } from "./firebase-init.js";
 
 import { firebaseConfig } from "./config.js";
@@ -159,7 +163,7 @@ export const loginUser = (email, password) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      userFromId();
+
       if (user.emailVerified === true) {
         window.location.hash = "#/wall";
         // console.log(user);
@@ -190,19 +194,6 @@ export const loginUser = (email, password) => {
         loginWrongPassword.style.display = "none";
       }
     });
-};
-
-export const userFromId = async () => {
-  const user = auth.currentUser;
-  const userName = user.displayName;
-  if (user !== null) {
-    const docRefUsuarios = await addDoc(collection(db, "userFromId"), {
-      name: user.email,
-      email: user.email,
-      uid: user.uid,
-    });
-    // console.log(docRefGoogle);
-  }
 };
 
 // log out
@@ -251,3 +242,11 @@ export const onGetTasks = query(
   collection(db, "usuarios"),
   orderBy("date", "desc"),
 );
+
+export const deleteTask = (id) => deleteDoc(doc(db, "usuarios", id));
+
+export const getTaskEdit = (id) => getDoc(doc(db, "usuarios", id));
+
+export const updateTask = (id, newDescription) => updateDoc(doc(db, "usuarios", id), {
+  newDescription: description,
+});
