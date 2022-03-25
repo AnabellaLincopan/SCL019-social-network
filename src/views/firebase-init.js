@@ -19,9 +19,13 @@ import {
   addDoc,
   getDocs,
   onSnapshot,
+  Timestamp,
   query,
   orderBy,
-  Timestamp,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -40,7 +44,11 @@ export {
   getDocs,
   addDoc,
   onSnapshot,
+  Timestamp,
   query,
   orderBy,
-  Timestamp,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 };
