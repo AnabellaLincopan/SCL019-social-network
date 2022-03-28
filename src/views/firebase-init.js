@@ -26,6 +26,8 @@ import {
   doc,
   getDoc,
   updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -51,4 +53,6 @@ export {
   doc,
   getDoc,
   updateDoc,
+  arrayRemove,
+  arrayUnion,
 };

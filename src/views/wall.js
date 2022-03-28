@@ -1,10 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 // import { logOut } from "./firebase.js";
-import { saveTask,
+import {
+  saveTask,
   onGetTasks,
   deleteTask,
-  getTaskEdit,
-  updateTask,
+  // getTaskEdit,
+  // updateTask,
+  auth,
+  likePost,
 } from "./firebase.js";
 import { onSnapshot } from "./firebase-init.js";
 
@@ -55,11 +58,7 @@ export const viewWall = () => {
  <span class="errorPost"></span>
  
  `;
-  // Iconos a utilizar para eliminar y Like
-  //  <span class="post-remove"><i class="fa fa-trash"></i></span>
-  //  <span class="post-like"><i class="fa fa-thumbs-up"></i></span>
 
-  // infoWallContainer.appendChild(wallPostData);
   postSection.appendChild(wallPostData);
 
   // Creamos boton de Post
@@ -104,7 +103,7 @@ export const viewWall = () => {
         const userNameId = doc.data();
         postContainer += `
         <div class="newUserPost">
-        
+      
         <div class ="section-btn-edit-post">
         <span><button class="editPost-btn" value="${doc.id}">Edit</button></span>
         <button class="post-remove" value="${doc.id}"><i class="fa fa-trash"></i></button>
@@ -113,8 +112,8 @@ export const viewWall = () => {
         <div class="textDescriptionPost"><textarea id="textDescriptionPost" rows="5" readonly>${task.description}</textarea></div>
         </div>
         <div class="section-likes">
-        <button class="btn-Likes"><i class="fa fa-thumbs-up"></i></button>
-        <span class="likes-count"></span>
+        <button class="btn-Likes" value="${doc.id}"><i class="fa fa-thumbs-up"></i></button>
+        <input class="counter" type="number" value="${task.likesCounter}" size="1"  name="" readonly></input>
         <button class="btn-save-postEdit" style="display:none">Save</button>
         </div>
        `;
@@ -124,7 +123,7 @@ export const viewWall = () => {
       createPost.innerHTML = postContainer;
       const deleteBtns = createPost.querySelectorAll(".post-remove");
 
-      deleteBtns.forEach(btn => {
+      deleteBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
           if (confirm("Confirm Delete Post") === true) {
             deleteTask(btn.value);
@@ -133,28 +132,36 @@ export const viewWall = () => {
         });
       });
 
-      const editBtns = createPost.querySelectorAll(".editPost-btn");
+      // const editBtns = createPost.querySelectorAll(".editPost-btn");
 
-      editBtns.forEach(btn => {
-        btn.addEventListener("click", async () => {
-          const doc = await getTaskEdit(btn.value);
-          const editTextArea = createPost.querySelector("#textDescriptionPost");
-          editTextArea.removeAttribute("readonly");
+      // editBtns.forEach(btn => {
+      //   btn.addEventListener("click", async () => {
+      //     const doc = await getTaskEdit(btn.value);
+      //     const editTextArea = createPost.querySelector("#textDescriptionPost");
+      //     editTextArea.removeAttribute("readonly");
 
-          const saveEditPost = createPost.querySelector(".btn-save-postEdit");
-          saveEditPost.style.display = "block";
-          saveEditPost.addEventListener("click", () => {
-            const newDescription = editTextArea.value;
-            console.log(newDescription);
-            updateTask.apply(btn.value, newDescription());
-            saveEditPost.style.display = "none";
-            editTextArea.setAttribute("readonly");
-          });
-          // saveEditPost.className = "saveEditPost";
-          // saveEditPost.innerHTML = `
-          // <button class="btn-save-postEdit" value="Save"></button>`;
+      //     const saveEditPost = createPost.querySelector(".btn-save-postEdit");
+      //     saveEditPost.style.display = "block";
+      //     saveEditPost.addEventListener("click", () => {
+      //       const newDescription = editTextArea.value;
+      //       console.log(newDescription);
+      //       updateTask.apply(btn.value, newDescription());
+      //       saveEditPost.style.display = "none";
+      //       editTextArea.setAttribute("readonly");
+      //     });
+      // saveEditPost.className = "saveEditPost";
+      // saveEditPost.innerHTML = `
+      // <button class="btn-save-postEdit" value="Save"></button>`;
 
-          // console.log(doc.data());
+      // console.log(doc.data());
+      // });
+      // });
+      // LIKES & Like Counter
+      const likeBtn = createPost.querySelectorAll(".btn-Likes");
+      likeBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const userId = auth.currentUser.uid;
+          likePost(btn.value, userId);
         });
       });
     });

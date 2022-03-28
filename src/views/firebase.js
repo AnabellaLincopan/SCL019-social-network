@@ -40,6 +40,8 @@ import {
   doc,
   getDoc,
   updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from "./firebase-init.js";
 
 import { firebaseConfig } from "./config.js";
@@ -47,7 +49,7 @@ import { firebaseConfig } from "./config.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+export const auth = getAuth();
 
 // registro con email y contraseña (Registro de usuarios nuevos)
 export const registerUser = (userName, email, password) => {
@@ -247,6 +249,26 @@ export const deleteTask = (id) => deleteDoc(doc(db, "usuarios", id));
 
 export const getTaskEdit = (id) => getDoc(doc(db, "usuarios", id));
 
-export const updateTask = (id, newDescription) => updateDoc(doc(db, "usuarios", id), {
-  newDescription: description,
-});
+// export const updateTask = (id, newDescription) => updateDoc(doc(db, "usuarios", id), {
+//   newDescription: description,
+// });
+
+export const likePost = async (id, userId) => {
+  const postRef = doc(db, "usuarios", id);
+  const docLike = await getDoc(postRef);
+  const dataLike = docLike.data();
+  console.log(dataLike);
+  const likesCount = dataLike.likesCounter;
+
+  if ((dataLike.likes).includes(userId)) {
+    await updateDoc(postRef, {
+      likes: arrayRemove(userId),
+      likesCounter: likesCount - 1,
+    });
+  } else {
+    await updateDoc(postRef, {
+      likes: arrayUnion(userId),
+      likesCounter: likesCount + 1,
+    });
+  }
+};
