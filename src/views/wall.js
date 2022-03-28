@@ -1,10 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 // import { logOut } from "./firebase.js";
-import { saveTask,
+import {
+  saveTask,
   onGetTasks,
   deleteTask,
   getTaskEdit,
   updateTask,
+  auth,
 } from "./firebase.js";
 import { onSnapshot } from "./firebase-init.js";
 
@@ -102,30 +104,42 @@ export const viewWall = () => {
 
         const task = doc.data();
         const userNameId = doc.data();
-        postContainer += `
-        <div class="newUserPost">
-        
-        <div class ="section-btn-edit-post">
-        <span><button class="editPost-btn" value="${doc.id}">Edit</button></span>
-        <button class="post-remove" value="${doc.id}"><i class="fa fa-trash"></i></button>
-        </div>
-        <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
-        <div class="textDescriptionPost"><textarea id="textDescriptionPost" rows="5" readonly>${task.description}</textarea></div>
-        </div>
-        <div class="section-likes">
-        <button class="btn-Likes"><i class="fa fa-thumbs-up"></i></button>
-        <span class="likes-count"></span>
-        <button class="btn-save-postEdit" style="display:none">Save</button>
-        </div>
-       `;
 
-        // console.log(postContainer);
+        if (task.userId === auth.currentUser.uid) {
+          postContainer += `
+          <div class="newUserPost">
+          <div class ="section-btn-edit-post">
+          <span><button class="editPost-btn" value="${doc.id}">Edit</button></span>
+          <button class="post-remove" value="${doc.id}"><i class="fa fa-trash"></i></button>
+          </div>
+          <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
+          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" rows="5" readonly>${task.description}</textarea></div>
+          </div>
+          <div class="section-likes">
+          <button class="btn-Likes"><i class="fa fa-thumbs-up"></i></button>
+          <span class="likes-count"></span>
+          <button class="btn-save-postEdit-${doc.id}" style="display:none">Save</button>
+          </div>
+        `;
+        } else {
+          postContainer += `
+          <div class="newUserPost">
+          <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
+          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" rows="5"  readonly>${task.description}</textarea></div>
+          </div>
+          <div class="section-likes">
+          <button class="btn-Likes"><i class="fa fa-thumbs-up"></i></button>
+          <span class="likes-count"></span>
+          </div>
+          `;
+        }
+        createPost.innerHTML = postContainer;
       });
-      createPost.innerHTML = postContainer;
       const deleteBtns = createPost.querySelectorAll(".post-remove");
 
-      deleteBtns.forEach(btn => {
+      deleteBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
+          // eslint-disable-next-line no-restricted-globals
           if (confirm("Confirm Delete Post") === true) {
             deleteTask(btn.value);
           // console.log(btn.value);
@@ -135,20 +149,21 @@ export const viewWall = () => {
 
       const editBtns = createPost.querySelectorAll(".editPost-btn");
 
-      editBtns.forEach(btn => {
+      editBtns.forEach((btn) => {
         btn.addEventListener("click", async () => {
+          // eslint-disable-next-line no-unused-vars
           const doc = await getTaskEdit(btn.value);
-          const editTextArea = createPost.querySelector("#textDescriptionPost");
+          const editTextArea = createPost.querySelector(`#textDescriptionPost-${doc.id}`);
           editTextArea.removeAttribute("readonly");
 
-          const saveEditPost = createPost.querySelector(".btn-save-postEdit");
+          const saveEditPost = createPost.querySelector(`.btn-save-postEdit-${doc.id}`);
           saveEditPost.style.display = "block";
           saveEditPost.addEventListener("click", () => {
             const newDescription = editTextArea.value;
             console.log(newDescription);
-            updateTask.apply(btn.value, newDescription());
+            updateTask(btn.value, newDescription);
             saveEditPost.style.display = "none";
-            editTextArea.setAttribute("readonly");
+            editTextArea.setAttribute("readonly", true);
           });
           // saveEditPost.className = "saveEditPost";
           // saveEditPost.innerHTML = `

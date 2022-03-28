@@ -47,7 +47,8 @@ import { firebaseConfig } from "./config.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+export const auth = getAuth();
+// export const user = auth.currentUser;
 
 // registro con email y contraseña (Registro de usuarios nuevos)
 export const registerUser = (userName, email, password) => {
@@ -248,5 +249,5 @@ export const deleteTask = (id) => deleteDoc(doc(db, "usuarios", id));
 export const getTaskEdit = (id) => getDoc(doc(db, "usuarios", id));
 
 export const updateTask = (id, newDescription) => updateDoc(doc(db, "usuarios", id), {
-  newDescription: description,
+  description: newDescription,
 });
