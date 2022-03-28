@@ -4,13 +4,11 @@ import { registerUser } from "./firebase.js";
 // eslint-disable-next-line import/no-cycle
 
 export const viewRegister = () => {
-  // console.log("me ejecuto segundo");
   // aqui va el DOM de nuestra pagina de registro
   // Creamos el padre de toda la seccion Register
 
   const registerContainer = document.createElement("div");
   registerContainer.className = "registerContainer";
-  // root.appendChild(registerContainer);
 
   // Creamos el contenedor de toda la seccion
   const infoContainer = document.createElement("div");
@@ -113,7 +111,6 @@ export const viewRegister = () => {
       document.querySelector(".nonePassword").style.display = "none";
     }
     registerUser(userName, email, password);
-    // // // console.log(registerUser);
   });
 
   // SECCION FINAL DEL REGISTRO
@@ -122,10 +119,6 @@ export const viewRegister = () => {
   footerRegister.className = "footerRegister";
   infoContainer.appendChild(footerRegister);
 
-  // const rabbit = document.createElement("img");
-  // rabbit.className = "rabbit-img";
-  // rabbit.setAttribute("src", "./assets/white-rabbit.png");
-  // footerRegister.appendChild(rabbit);
   // Seccion
   const sectionReturn = document.createElement("div");
   sectionReturn.className = "sectionReturn";
