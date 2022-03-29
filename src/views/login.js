@@ -6,7 +6,6 @@ import { loginUser } from "./firebase.js";
 // import { root } from "../main.js";
 
 export const viewLogin = () => {
-  // aqui va el DOM de nuestra pagina de Login
   // Creamos el padre de toda la seccion Login
 
   const loginContainer = document.createElement("div");
@@ -56,7 +55,6 @@ export const viewLogin = () => {
     `;
 
   loginInfoContainer.appendChild(loginUserData);
-  // console.log('Hola mundo!');
 
   // Mostrar y ocultar contraseña
   const iconEye = loginUserData.querySelector(".login-iconEye");
@@ -96,7 +94,6 @@ export const viewLogin = () => {
       document.querySelector(".enterPassword").style.display = "none";
     }
     loginUser(email, password);
-    // // // console.log(registerUser);
   });
 
   // Botón de google
@@ -127,11 +124,6 @@ export const viewLogin = () => {
   loginFooter.className = "loginFooter";
   loginInfoContainer.appendChild(loginFooter);
 
-  // Agregamos imagen para version responsive
-  // const rabbit = document.createElement("img");
-  // rabbit.className = "loginRabbit-img";
-  // rabbit.setAttribute("src", "./assets/white-rabbit.png");
-  // loginFooter.appendChild(rabbit);
   // Seccion link to Register
   const sectionReturn = document.createElement("div");
   sectionReturn.className = "sectionReturn";
@@ -141,16 +133,6 @@ export const viewLogin = () => {
   returnRegister.className = "returnRegister";
   returnRegister.textContent = "Nevenka Veliz  Anabella Lincopan  Zulibeth Torres";
   sectionReturn.appendChild(returnRegister);
-
-  // const link = document.createElement("a");
-  // link.className = "linkReturnRegister";
-  // link.textContent = "Register Here";
-  // sectionReturn.appendChild(link);
-
-  // link.addEventListener("click", () => {
-  //   window.location.hash = "#/register";
-  //   // console.log("Hola");
-  // });
 
   return loginContainer;
 };
