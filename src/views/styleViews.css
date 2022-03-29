@@ -83,11 +83,11 @@ body{
 
 #nameEnter, #passwordRequiredText, #passwordNoneText, #emailRequired  {
   display: none;
-  color: rgb(104, 5, 5);
-  font-size: 13px;
-  font-style: italic;
-  margin-left: 16px;
-  margin-top: -3px;
+  color: whitesmoke;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  margin-left: 164px;
+  margin-top: -31px;
 }
 
 .emailInUseInvalid, .emailLoginEnter, .userNotFound, .wrongPassword, .enterPassword {
@@ -100,8 +100,8 @@ body{
 }
 .showEmailInUse {
   display: block;
-  color: red;
-  font-style: italic;
+  color: whitesmoke;
+  font-family: 'Nunito', sans-serif;
 }
 
 .buttonContinue, .login-btnContinue, .login-btnRegister, .buttonGoogle{
@@ -177,10 +177,6 @@ body{
   color: #00FF0A;
   cursor: pointer;
 }
-/* .rabbit-img,
-.loginRabbit-img {
-  display: none;
-} */
 
 
 /*//////////////// LOGIN VIEW ////////////*/
@@ -416,4 +412,16 @@ border: 1px solid #00FFD1
   height: 20px;
   align-items: center;
   padding-left: 10px;
+}
+#btnSaveEditPost{
+ position: absolute;
+ width: 50px;
+ height: 25px;
+ margin-top: -17px;
+ margin-left: 191px;
+ background: #171717;
+ border: -1px solid #FFFFFF;
+ border-radius: 4px;
+ background-color: #333333;
+ color: white;
 }

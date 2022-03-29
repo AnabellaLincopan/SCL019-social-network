@@ -106,7 +106,7 @@ export const viewWall = () => {
           <div class="section-likes">
           <button class="btn-Likes" value="${doc.id}"><i class="fa fa-thumbs-up"></i></button>
           <input class="counter" type="number" value="${task.likesCounter}" size="1"  name="" readonly></input>
-          <button class="btn-save-postEdit-${doc.id}" style="display:none">Save</button>
+          <button id="btnSaveEditPost" class="btn-save-postEdit-${doc.id}" style="display:none">Save</button>
           </div>
         `;
         } else {
