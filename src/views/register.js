@@ -52,7 +52,7 @@ export const viewRegister = () => {
   <div class="password"> Password </div>
   <span class="iconEye"><i id="checkEye" class="fas fa-eye-slash"></i></span>
   <input type="password" id="passwordLogin" class="passwordLogin" placeholder= "Enter password" minlength="6" maxlength="8" size ="25"/>
-  <span class="displayNone"><p id="passwordRequiredText"> *Minimum 6 characters </p></span>
+  <span class="displayNone"><p id="passwordRequiredText"> Minimum 6 characters </p></span>
   <span class="displayNone"><p id="passwordNoneText" class="nonePassword"> Enter password </p></span>
   </form>
   </div>

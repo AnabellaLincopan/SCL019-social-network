@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 body{
     background-color: #4b4a4a;
   font-family: "Fira Code", monospace;
@@ -91,11 +92,11 @@ body{
 
 .emailInUseInvalid, .emailLoginEnter, .userNotFound, .wrongPassword, .enterPassword {
   display: none;
-  color: rgb(104, 5, 5);
+  color: whitesmoke;
   font-size: 13px;
-  font-style: italic;
-  margin-left: 16px;
-  margin-top: -3px;
+  font-family: 'Nunito', sans-serif;
+  margin-left: 174px;
+  margin-top: -15px;
 }
 .showEmailInUse {
   display: block;
@@ -229,9 +230,9 @@ body{
 } 
 .login-iconEye {
   color: white;
-  display: flex;
-  margin-left: -1258px ;
-  margin-top: 7px;
+  position: absolute;
+  margin-left: 260px;
+  margin-top: 8px;
   cursor: pointer;
 }
 .returnRegister {
@@ -248,6 +249,7 @@ body{
   width: 100%;
   height: 100%;
   margin: 0;
+  margin-left: 14px;
   padding: 10%;
   display: flex;
   justify-content: center;
@@ -258,17 +260,23 @@ body{
   margin-left: 235px;
 }
 .btnLogout-In{
-  background-color: #121111 ;
-  color: #F5F5F5;
+  background-color: #2c2c2c ;
+  color: #c0bebe;
   border: none;
+  height: 40px;
+  width: 40px;
+  /* left: 303px;
+  top: 26px; */
+  border-radius: 4px;
+  box-shadow: 0px 4px 0px #575151;
 }
 .idUserText{
   display: flex;
   justify-content: left;
   margin-top: 7px;
-  font-family: "Fira Code", monospace;
+  font-family: 'Nunito', sans-serif;
   color: #F5F5F5;
-  font-size: 20px;
+  font-size: 30px;
 }
 .postSection{
   display: flex;
@@ -276,19 +284,41 @@ body{
   flex-direction: column;
   margin-top: 20px;
 }
+.makePost{
+ display: flex;
+ width: 252px;
+ height: 79px;
+ padding: 10px;
+ background: #C4C4C4;
+ box-shadow: inset 0px 0px 2px 3px rgba(0, 0, 0, 0.25);
+ border-radius: 3px;
+}
+.makePost::placeholder{
+  font-family: 'IBM Plex Sans', sans-serif;
+  color:#524f4f
+}
+.errorPost{
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  font-family: 'Nunito', sans-serif;
+}
 .btnPost{
   display: flex;
   justify-content: right;
   
 }
 #btnPost-edit{
+  padding: 5px; 
+  width: 4.50em;
+  margin-top: 10px;
+  box-shadow: 0px 4px 0px #3C3B3B;
   background-color: #6B6A6A;
   border-radius: 3px;
   color: white;
   border: none;
-  padding: 5px; 
-  width: 4.50em;
-  margin-top: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
 }
 /*SECCION DE POSTS*/
 .createPost{
@@ -303,15 +333,27 @@ body{
   flex-direction: column;
 /* height: 78px;
 width: 267px; */
-margin-top: 15px;
+margin-top: 35px;
 border-radius: 5px;
 background-color: #333333;
 border: 1px solid #00FFD1
+}
+.textUserOnPost-Edit{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 7px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #F5F5F5;
+  font-style: italic;
+  font-size: 15px;
 }
 .textUserOnPost{
   display: flex;
   flex-direction: row;
   justify-content: left;
+  margin-left: 7px;
+  margin-top: 7px;
   font-family: 'IBM Plex Sans', sans-serif;
   color: #F5F5F5;
   font-style: italic;
@@ -322,18 +364,56 @@ border: 1px solid #00FFD1
   flex-direction: row;
   justify-content: end;
 }
+.editPost-btn{
+ width: 40px;
+ height: 25px;
+ margin-top: 3px;
+ background: #171717;
+ border: -1px solid #FFFFFF;
+ border-radius: 4px;
+ background-color: #333333;
+ color: white;
+}
+.post-remove{
+  background-color: #333333;
+ color: white;
+ border: none;
+ margin-top: 3px;
+}
 .textDescriptionPost{
   color: #F5F5F5;
   display: flex;
   flex-direction: column;
 }
+.userPostText{
+  background-color: #333333;
+  color: white;
+  border:none;
+  padding: 15px;
+  margin-top: 3px;
+}
 .section-likes{
-  display: flex;
-  justify-content: right;
+ position: relative;
  
 }
 .btn-Likes{
+  position: absolute;
   background-color: #121111 ;
   color: #F5F5F5;
-  border: 1px solid #00FFD1
+  border: 1px solid #00FFD1;
+  margin-top: -15px;
+  margin-left: 10px;
+  height: 24px;
+}
+.counter{
+  position: absolute;
+  background-color: #121111 ;
+  color: #F5F5F5;
+  border: 1px solid #00FFD1;
+  margin-top: -15px;
+  margin-left: 37px;
+  width: 14px;
+  height: 20px;
+  align-items: center;
+  padding-left: 10px;
 }

@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-// import { logOut } from "./firebase.js";
 import {
   saveTask,
   onGetTasks,
@@ -43,7 +42,7 @@ export const viewWall = () => {
   const idUserText = document.createElement("h1");
   idUserText.className = "idUserText";
   wallHeader.appendChild(idUserText);
-  idUserText.textContent = " Hello & Welcome ";
+  idUserText.textContent = " Welcome ";
 
   // Creacion de Seccion de Post
   const postSection = document.createElement("div");
@@ -75,14 +74,11 @@ export const viewWall = () => {
 
   btnPost.addEventListener("click", () => {
     if (description.value === "") {
-      // console.log("funciona");
-      errorPost.innerHTML = "Error: Debe ingresar un texto";
+      errorPost.innerHTML = "Please enter text";
     } else {
       const textPost = wallContainer.querySelector(".makePost").value;
-      // console.log(textPost);
       saveTask(textPost);
       document.getElementById("task-description").value = "";
-      // console.log("logrado");
     }
   });
 
@@ -91,14 +87,9 @@ export const viewWall = () => {
   infoWallContainer.appendChild(createPost);
 
   const newPost = async () => {
-    // console.log("works");
     onSnapshot(onGetTasks, (querySnapshot) => {
       let postContainer = "";
-
-      // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-      // console.log(doc.data());
-
         const task = doc.data();
         const userNameId = doc.data();
 
@@ -109,8 +100,8 @@ export const viewWall = () => {
           <span><button class="editPost-btn" value="${doc.id}">Edit</button></span>
           <button class="post-remove" value="${doc.id}"><i class="fa fa-trash"></i></button>
           </div>
-          <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
-          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" rows="5" readonly>${task.description}</textarea></div>
+          <div class="textUserOnPost-Edit"<h3>${userNameId.name}</h3></div>
+          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" class="userPostText" rows="5" readonly>${task.description}</textarea></div>
           </div>
           <div class="section-likes">
           <button class="btn-Likes" value="${doc.id}"><i class="fa fa-thumbs-up"></i></button>
@@ -122,7 +113,7 @@ export const viewWall = () => {
           postContainer += `
           <div class="newUserPost">
           <div class="textUserOnPost"<h3>${userNameId.name}</h3></div>
-          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" rows="5"  readonly>${task.description}</textarea></div>
+          <div class="textDescriptionPost"><textarea id="textDescriptionPost-${doc.id}" rows="5" class="userPostText"  readonly>${task.description}</textarea></div>
           </div>
           <div class="section-likes">
           <button class="btn-Likes" value="${doc.id}"><i class="fa fa-thumbs-up"></i></button>
@@ -139,7 +130,6 @@ export const viewWall = () => {
           // eslint-disable-next-line no-restricted-globals
           if (confirm("Confirm Delete Post") === true) {
             deleteTask(btn.value);
-          // console.log(btn.value);
           }
         });
       });
@@ -156,7 +146,6 @@ export const viewWall = () => {
           saveEditPost.style.display = "block";
           saveEditPost.addEventListener("click", () => {
             const newDescription = editTextArea.value;
-            // console.log(newDescription);
             updateTask(btn.value, newDescription);
             saveEditPost.style.display = "none";
             editTextArea.setAttribute("readonly", true);
@@ -174,9 +163,7 @@ export const viewWall = () => {
     });
   };
 
-  const wallPost = newPost();
-  // wallPost.createElement("div");
-  console.log(wallPost);
+  newPost();
 
   return wallContainer;
 };

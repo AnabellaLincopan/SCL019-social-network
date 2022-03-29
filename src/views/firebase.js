@@ -125,7 +125,7 @@ export const loginUser = (email, password) => {
       if (user.emailVerified === true) {
         window.location.hash = "#/wall";
       } else {
-        alert("Debes verificar tu email para poder ingresar");
+        alert("Please verify your email for login");
       }
     })
 
@@ -206,7 +206,7 @@ export const likePost = async (id, userId) => {
   const postRef = doc(db, "usuarios", id);
   const docLike = await getDoc(postRef);
   const dataLike = docLike.data();
-  console.log(dataLike);
+  // console.log(dataLike);
   const likesCount = dataLike.likesCounter;
 
   if ((dataLike.likes).includes(userId)) {
