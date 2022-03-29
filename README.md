@@ -48,7 +48,7 @@ Realizamos un prototipo de baja fidelidad y un prototipo de alta fidelidad para 
 
 Para  verificar que nuestra aplicacion tuviera los adecuados criterios de diseño, realizamos tests de usabilidad presenciales en los cuales se  nos dió feedback en relación a funciones, mensajes, o contrastes que nos ayudaron a corregir e iterar en nuestro codigo. Ayudandonos a mejorar el mismo despues de cada instancia. 
 
-## Tecnolgías Empleadas
+## Tecnologías Empleadas
 
 #### Para Diseño y Estructura:
   - Html, Css, Figma
