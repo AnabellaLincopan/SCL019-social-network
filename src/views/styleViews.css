@@ -42,10 +42,10 @@ body{
   margin-top: 70px;
   margin-left: 21px;
 }
-.FormLogin,
+/* .FormLogin,
 .loginFormLogin {
-  margin-left: 10px;
-}
+  margin:auto;
+} */
 .name,
 .nickName,
 .email,
@@ -201,7 +201,8 @@ body{
 .welcomeText{
     /* position:absolute; */
     font-size: 15px;
-    color: #03A014;
+    color: #00FF0A;
+    margin: 10%;
 
 }
 .loginUserData {

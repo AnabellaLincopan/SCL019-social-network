@@ -1,13 +1,12 @@
-@media (min-width: 950px){
-    
-    /*Register Section*/
- body{
+@media (min-width: 950px) {
+  /*Register Section*/
+  body {
     background-color: #121111;
     position: relative;
     width: 1025px;
-    height: 655px; 
- }
- .registerContainer {
+    height: 655px;
+  }
+  .registerContainer {
     --border-width: 3px; /* OJO NUEVA ANOTACION*/
     position: absolute;
     width: 955px;
@@ -18,292 +17,302 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;  
-    margin-left: 20px; 
+    margin-top: 20px;
+    margin-left: 20px;
     color: white;
-    font-size: 1em ;
-    font-family:'Fira Code', monospace;
+    font-size: 1em;
+    font-family: "Fira Code", monospace;
     border-radius: var(--border-width);
+  }
+  .registerContainer::after,
+  .loginContainer::after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(231, 100%, 50%),
+      hsl(273, 73%, 53%),
+      hsl(314, 100%, 50%),
+      hsl(12, 100%, 50%),
+      hsl(64, 100%, 50%),
+      hsl(89, 85%, 66%),
+      hsl(134, 100%, 50%),
+      hsl(179, 100%, 50%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 10s alternate infinite;
+  }
 
-}
- .registerContainer::after, .loginContainer::after{
-   position: absolute; 
-   content: "";  
-   z-index: -1; 
-   width: calc(100% + var(--border-width) * 2);
-   height: calc(100% + var(--border-width) * 2); 
-   background: linear-gradient(
-       60deg,
-       hsl(231, 100%, 50%),
-       hsl(273, 73%, 53%),
-       hsl(314, 100%, 50%),
-       hsl(12, 100%, 50%),
-       hsl(64, 100%, 50%),
-       hsl(89, 85%, 66%),
-       hsl(134, 100%, 50%),
-       hsl(179, 100%, 50%)
-     );
-      background-size: 300% 300%; 
-     background-position: 0 50%; 
-     border-radius: calc(2 * var(--border-width)); 
-     animation: moveGradient 10s alternate infinite; 
- }
+  @keyframes moveGradient {
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 
- @keyframes moveGradient {
-   50% {
-     background-position: 100% 50%;
-   }
- } 
-
-  .infoContainer, .loginInfoContainer{
+  .infoContainer,
+  .loginInfoContainer {
     position: relative;
     display: flex;
   }
 
-  .headerLogin{
-   display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin-top: 60px;
-  margin-left: 60px;
- }
-        
- .logoApp{
+  .headerLogin {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 60px;
+  }
+
+  .logoApp {
     font-size: 20px;
-    }
- .registerText{
+  }
+  .registerText {
     font-size: 25px;
-    }
- .userData{
-   display: flex;
-   flex-direction: column;
-   margin-top: 0px;
-   margin-left: 0px; 
-    } 
- .FormLogin, .loginFormLogin{
+  }
+  .userData {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  .FormLogin,
+  .loginFormLogin {
     margin-left: 7px;
-    }
- .name, .nickName, .email, .password, .loginUser, .loginPassword{
+  }
+  .name,
+  .nickName,
+  .email,
+  .password,
+  .loginUser,
+  .loginPassword {
     font-size: 15px;
     color: white;
-    }
- .registerNameLogin, .nickNameLogin, .emailLogin, .passwordLogin, .loginEmailUser,.loginPasswordInput{
+  }
+  .registerNameLogin,
+  .nickNameLogin,
+  .emailLogin,
+  .passwordLogin,
+  .loginEmailUser,
+  .loginPasswordInput {
     display: flex;
     font-size: 12px;
     padding: 3px;
     border: 2px solid;
-    border-color: #00FFD1;
+    border-color: #00ffd1;
     margin-bottom: 20px;
-    } 
-    .buttonContinue, .login-btnContinue, .login-btnRegister, .buttonGoogle{
-      display: flex;
-      justify-content: center;
-      align-items: center; 
-      text-align: center;
-      margin-top: 21px;
-      background-color: #918d8d;
-      color: white;
-      font-size: 12px;
-      font-family:'Fira Code', monospace;
-      width: 16.20em;
-      padding: 8px;
-      border-radius: 3px; 
-      box-shadow: 2px 5px 4px 0px #00000040;
-      transition: all 0.5s;
-      cursor: pointer;
   }
- .iconEye{
+  .buttonContinue,
+  .login-btnContinue,
+  .login-btnRegister,
+  .buttonGoogle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 21px;
+    background-color: #918d8d;
+    color: white;
+    font-size: 12px;
+    font-family: "Fira Code", monospace;
+    width: 16.2em;
+    padding: 8px;
+    border-radius: 3px;
+    box-shadow: 2px 5px 4px 0px #00000040;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  .iconEye {
     position: absolute;
     /* padding: 4px; */
     left: 1570px;
-      
- }
- #passwordRequiredText{
-   display: none;
-   color: whitesmoke;
-   font-size: 10px;
-   font-family: 'Nunito', sans-serif;
-   margin: 0;
-   margin-left: 139px;
-  margin-top: -16px;
-   } 
+  }
+  #passwordRequiredText {
+    display: none;
+    color: whitesmoke;
+    font-size: 10px;
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    margin-left: 139px;
+    margin-top: -16px;
+  }
 
- #nameEnter, #emailRequired, #passwordNoneText{
-   display: none;
-   color: whitesmoke;
-   font-size: 10px;
-   font-family: 'Nunito', sans-serif;
-   margin-left: 139px;
-  margin-top: -16px;
- } 
- .buttonGoogle:hover{
-  background-color: #850000;
-  padding-left: 24px;
-  padding-right:8px;
-  transition: 0.5s;
-  
- }  
- .footerRegister{
+  #nameEnter,
+  #emailRequired,
+  #passwordNoneText {
+    display: none;
+    color: whitesmoke;
+    font-size: 10px;
+    font-family: "Nunito", sans-serif;
+    margin-left: 139px;
+    margin-top: -16px;
+  }
+  .buttonGoogle:hover {
+    background-color: #850000;
+    padding-left: 24px;
+    padding-right: 8px;
+    transition: 0.5s;
+  }
+  .footerRegister {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     margin-top: 125px;
-   /*margin-left: 589px; */
- }
- .loginFooter{
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  margin-top: 100px;
- }
- 
- .sectionReturn{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-left: 0;
-   margin-top: -17px;
- }
- .returnLogin{
-  display: flex;
-  justify-content: center;
-  font-size: 10px;
-  color: #F5F5F5
- }
- .linkReturnLogin{
-  display: flex;
-  justify-content: center;
-  margin-top: 7px;
-  font-size: 11px;
-  color: #00FF0A;
-  cursor: pointer;
- }
- /* ------- SECCION LOGIN --------- */
+    /*margin-left: 589px; */
+  }
+  .loginFooter {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-top: 100px;
+  }
 
- .loginContainer{
-   --border-width: 3px; /* OJO NUEVA ANOTACION*/
-   position: absolute;
-   width: 1300px;
-   height: 580px;
-   left: 66px;
-   top: 37px;
-   background-color: #4b4a4a;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-top: 20px;  
-   margin-left: 20px; 
-   color: white;
-   font-size: 1em ;
-   font-family:'Fira Code', monospace;
-   border-radius: var(--border-width);
+  .sectionReturn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    margin-top: -17px;
+  }
+  .returnLogin {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    color: #f5f5f5;
+  }
+  .linkReturnLogin {
+    display: flex;
+    justify-content: center;
+    margin-top: 7px;
+    font-size: 11px;
+    color: #00ff0a;
+    cursor: pointer;
+  }
+  /* ------- SECCION LOGIN --------- */
 
- }
+  .loginContainer {
+    --border-width: 3px; /* OJO NUEVA ANOTACION*/
+    position: absolute;
+    width: 1300px;
+    height: 580px;
+    left: 66px;
+    top: 37px;
+    background-color: #4b4a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: white;
+    font-size: 1em;
+    font-family: "Fira Code", monospace;
+    border-radius: var(--border-width);
+  }
 
- .loginUserData{
-  display:flex; 
-  align-items: center;
-  flex-direction: column;
-  margin-left: 410px; 
- }
- .loginLogoApp{
-   display: flex;
-     width: 12%;
-     margin-top: 70px;
-     margin-left: 100px;
- 
- }
- .loginLoginText{
-  font-size: 25px;
-  position: absolute;
-  left: 195px;
-  top: 207px;
- }
+  .loginUserData {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 410px;
+  }
+  .loginLogoApp {
+    display: flex;
+    width: 12%;
+    margin-top: 70px;
+    margin-left: 100px;
+  }
+  .loginLoginText {
+    font-size: 25px;
+    position: absolute;
+    left: 195px;
+    top: 207px;
+  }
 
-.login-iconEye{
-   padding: 4px;
-   left: 673px;
-   margin-top: 0px;
-     
-}
-/*SECCION MURO*/
- .wall{
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-
- } 
- .infoWallContainer{
-  background-color: #121111;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 10%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-left: 264px;
-}
- .wallHeader{
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
- }
- .btnLogout{
-  display: flex;
-  margin-left: 235px;
-}
- .postSection{
-   display: flex;
-   flex-direction: column;
-   margin-top: 30px;
-   margin-left: 20px;
- }
- .wallPostData{
-   display: flex;
-   flex-direction: column;
-   margin-left: 30px;
- }
- .makePost{
-  display: inline-block;
-  width: 355px;
-  height: 79px;
-  padding: 10px;
-  background: #C4C4C4;
-  box-shadow: inset 0px 0px 2px 3px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
- }
- .btnPost{
-  display: flex;
-  margin-left: 30px;
-  
-}
-.createPost{
-  display: flex;
-  flex-direction: column;
-}
-.counter{
-  position: absolute;
-  background-color: #121111 ;
-  color: #F5F5F5;
-  border: 1px solid #00FFD1;
-  margin-top: -15px;
-  margin-left: 37px;
-  width: 20px;
-  height: 20px;
-  align-items: center;
-  padding-left: 10px;
-}
-#btnSaveEditPost{
-  position: absolute;
-  width: 50px;
-  height: 25px;
-  margin-top: -17px;
-  margin-left: 520px;
-  background: #171717;
-  border: -1px solid #FFFFFF;
-  border-radius: 4px;
-  background-color: #333333;
-  color: white;
- }
+  .login-iconEye {
+    padding: 4px;
+    left: 673px;
+    margin-top: 0px;
+  }
+  /*SECCION MURO*/
+  .wall {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .infoWallContainer {
+    background-color: #282626;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 264px;
+  }
+  .wallHeader {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .btnLogout {
+    display: flex;
+    margin-left: auto;
+  }
+  .postSection {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+  .wallPostData {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 30px; */
+  }
+  .makePost {
+    display: inline-block;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+    background: #c4c4c4;
+    box-shadow: inset 0px 0px 2px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+  }
+  .btnPost {
+    display: flex;
+    margin-left: 30px;
+  }
+  .createPost {
+    display: flex;
+    flex-direction: column;
+  }
+  .counter {
+    position: absolute;
+    background-color: #121111;
+    color: #f5f5f5;
+    border: 1px solid #00ffd1;
+    margin-top: -15px;
+    margin-left: 37px;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    padding-left: 10px;
+  }
+  #btnSaveEditPost {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    margin-top: -17px;
+    margin-left: 520px;
+    background: #171717;
+    border: -1px solid #ffffff;
+    border-radius: 4px;
+    background-color: #333333;
+    color: white;
+  }
 }
